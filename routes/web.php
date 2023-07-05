@@ -32,6 +32,6 @@ require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('admin', function () {
-        return view('admin.layouts.master');
+        return view('admin.index');
     });
 });
