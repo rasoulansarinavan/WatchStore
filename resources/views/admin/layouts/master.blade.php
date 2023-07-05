@@ -16,8 +16,9 @@
 <body class="small-navigation">
 @include('admin.layouts.navigation')
 @include('admin.layouts.header')
+@livewireStyles
 @yield('content')
-
+@livewireScripts
 
 <script src="{{url('panel/vendors/bundle.js')}}"></script>
 <script src="{{url('panel/vendors/slick/slick.min.js')}}"></script>
