@@ -22,15 +22,25 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+//Route::middleware('auth')->group(function () {
+//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//});
 
 require __DIR__ . '/auth.php';
 
-Route::middleware('auth')->group(function () {
-    Route::get('admin', [\App\Http\Controllers\Admin\PanelController::class, 'index'])->name('panel');
-    Route::resource('admin/users', \App\Http\Controllers\Admin\UserController::class);
+Route::prefix('admin')->middleware('auth')->group(function () {
+    ///------ Main Route -----///
+    Route::get('', [\App\Http\Controllers\Admin\PanelController::class, 'index'])->name('panel');
+    ///------ USer -----///
+    Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
+    Route::resource('/roles', \App\Http\Controllers\Admin\RoleController::class);
+    Route::get('create_user_roles/{id}', [\App\Http\Controllers\Admin\UserController::class, 'createUserRoles'])->name('create.user.roles');
+    Route::post('store_user_roles/{id}', [\App\Http\Controllers\Admin\UserController::class, 'storeUserRoles'])->name('store.user.roles');
+    Route::get('logs', [\App\Http\Controllers\Admin\LogViewerController::class, 'index'])->name('logs');
+
+    ///------ Product -----///
+    Route::resource('category',\App\Http\Controllers\Admin\CategoryController::class);
+
 });
