@@ -8,6 +8,7 @@ use App\Http\Requests\EditUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 
 class UserController extends Controller
@@ -89,5 +90,19 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function createUserRoles($id)
+    {
+        $user = User::query()->find($id);
+        $roles = Role::query()->get();
+        return view('admin.user.user_roles', compact('user', 'roles'));
+    }
+
+    public function storeUserRoles(Request $request, $id)
+    {
+        $user = User::query()->find($id);
+        $user->syncRoles($request->roles);
+        return redirect()->route('users.index')->with('message', 'نقش کاربر  با موفقیت انجام شد');
     }
 }
