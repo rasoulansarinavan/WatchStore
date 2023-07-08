@@ -41,6 +41,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('logs', [\App\Http\Controllers\Admin\LogViewerController::class, 'index'])->name('logs');
 
     ///------ Product -----///
-    Route::resource('category',\App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('sliders', \App\Http\Controllers\Admin\SliderController::class);
 
 });
