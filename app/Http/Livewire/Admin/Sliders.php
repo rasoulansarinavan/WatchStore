@@ -7,7 +7,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 class Sliders extends Component
-{ use WithPagination;
+{
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -21,7 +22,8 @@ class Sliders extends Component
         $this->dispatchBrowserEvent('deleteSlider', ['id' => $id]);
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Slider::query()->find($id)->delete();
         $this->emit('refreshComponent');
     }
