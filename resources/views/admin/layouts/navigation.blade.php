@@ -68,6 +68,27 @@
                     <li><a href="{{route('sliders.index')}}">لیست اسلایدر</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#">برند</a>
+                <ul>
+                    <li><a href="{{route('brands.create')}}">ایجاد برند</a></li>
+                    <li><a href="{{route('brands.index')}}">لیست برند</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">رنگ</a>
+                <ul>
+                    <li><a href="{{route('colors.create')}}">ایجاد رنگ</a></li>
+                    <li><a href="{{route('colors.index')}}">لیست رنگ</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">محصولات</a>
+                <ul>
+                    <li><a href="{{route('products.create')}}">ایجاد محصول</a></li>
+                    <li><a href="{{route('products.index')}}">لیست محصول</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
