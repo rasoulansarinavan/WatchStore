@@ -8,7 +8,6 @@
                     <h6 class="card-title">ایجاد دسته بندی</h6>
                     <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
                         @csrf
-                        @method('PATCH')
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">نام دسته بندی</label>
                             <div class="col-sm-10">
