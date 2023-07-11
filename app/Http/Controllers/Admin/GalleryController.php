@@ -12,7 +12,7 @@ class GalleryController extends Controller
     public function addGallery($id)
     {
         $product = Product::query()->find($id);
-        return view('admin.product.create_gallery', compact('product'));
+        return view('admin.product.create_gallery', compact('product','id'));
     }
 
     public function storeGallery(Request $request, $id)
