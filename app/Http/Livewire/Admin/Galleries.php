@@ -12,15 +12,16 @@ class Galleries extends Component
         'delete',
         'refreshComponent' => '$refresh'
     ];
+    public $product_id;
 
-    public function deleteGallery($id)
+    public function deleteGallery($product_id, $id)
     {
-        $this->dispatchBrowserEvent('deleteGallery', ['id' => $id]);
+        $this->dispatchBrowserEvent('deleteGallery', ['product_id' => $product_id, 'id' => $id]);
     }
 
-    public function delete($id)
+    public function delete($product_id, $id)
     {
-        $gallery = Gallery::query()->find($id);
+        $gallery = Gallery::query()->where('product_id', $product_id)->where('id', $id)->first();
         $path = public_path() . '/images/admin/products/big/' . $gallery->image;
         $path1 = public_path() . '/images/admin/products/small/' . $gallery->image;
         unlink($path);
