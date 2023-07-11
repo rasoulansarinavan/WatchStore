@@ -15,6 +15,7 @@
             <th class="text-center align-middle text-primary">قیمت</th>
             <th class="text-center align-middle text-primary">بازدید</th>
             <th class="text-center align-middle text-primary">تعداد محصول</th>
+            <th class="text-center align-middle text-primary">گالری محصول</th>
             <th class="text-center align-middle text-primary">گارانتی محصول</th>
             <th class="text-center align-middle text-primary">تخفیف</th>
             <th class="text-center align-middle text-primary">محصول شگفت انگیز</th>
@@ -49,6 +50,11 @@
                 <td class="text-center align-middle">{{$product->brand->title}}</td>
                 <td class="text-center align-middle">{{$product->category->title}}</td>
                 <td class="text-center align-middle">{{$product->description}}</td>
+                <td class="text-center align-middle">
+                    <a class="btn btn-outline-info" href="{{route('create.product.gallery',$product->id)}}">
+                        گالری
+                    </a>
+                </td>
                 <td class="text-center align-middle">
                     <a class="btn btn-outline-info" href="{{route('products.edit',$product->id)}}">
                         ویرایش
