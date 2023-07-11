@@ -46,6 +46,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('brands', \App\Http\Controllers\Admin\BrandController::class);
     Route::resource('colors', \App\Http\Controllers\Admin\ColorController::class);
     Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('property_groups', \App\Http\Controllers\Admin\PropertyGroupController::class);
 
     Route::get('create_product_gallery/{id}', [\App\Http\Controllers\Admin\GalleryController::class, 'addGallery'])->name('create.product.gallery');
     Route::post('store_product_gallery/{id}', [\App\Http\Controllers\Admin\GalleryController::class, 'storeGallery'])->name('store.product.gallery');
