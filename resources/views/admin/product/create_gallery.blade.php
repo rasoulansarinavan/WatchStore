@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="container">
-                    <h6 class="card-title">ایجاد لیست تصاویر {{}}</h6>
+                    <h6 class="card-title">ایجاد لیست تصاویر محصول {{$product->title}}</h6>
                     <form method="POST" class="dropzone border border-primary"
                           action="{{route('store.product.gallery',$product->id)}}">
                         @csrf
@@ -15,11 +15,9 @@
                             </div>
                         </div>
                     </form>
-                    <livewire:admin.galleries :product_id={{$product->id}}/>
+                    <livewire:admin.galleries :product_id="$id"/>
                 </div>
             </div>
         </div>
     </main>
-@endsection
-@section('scripts')
 @endsection
