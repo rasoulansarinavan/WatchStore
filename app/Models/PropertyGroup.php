@@ -12,4 +12,9 @@ class PropertyGroup extends Model
     protected $fillable = [
         'title'
     ];
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
 }
