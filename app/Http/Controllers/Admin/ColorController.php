@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Livewire\Admin\Color;
 use App\Models\Brand;
-use App\Models\Colors;
+use App\Models\Color;
 use Illuminate\Http\Request;
 
 class ColorController extends Controller
@@ -33,9 +32,9 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        Colors::query()->create([
-            'title' => $request->input(['title']),
-            'code' => $request->input(['code'])
+       Color::query()->create([
+            'title' => $request->input('title'),
+            'code' => $request->input('code')
         ]);
         return redirect()->route('colors.index')->with('message', 'رنگ با موفقیت ایجاد شد');
     }
@@ -53,7 +52,7 @@ class ColorController extends Controller
      */
     public function edit(string $id)
     {
-        $color = Colors::query()->find($id);
+        $color = Color::query()->find($id);
         $title = 'ویرایش رنگ';
         return view('admin.color.edit', compact('title', 'color'));
     }
@@ -63,8 +62,8 @@ class ColorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $color = Colors::query()->find($id);
-        $brands = Colors::query()->pluck('title', 'id');
+        $color = Color::query()->find($id);
+        $brands = Color::query()->pluck('title', 'id');
         $color->update([
             'title' => $request->input(['title']),
             'code' => $request->input(['code'])
