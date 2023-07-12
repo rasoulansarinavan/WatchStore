@@ -96,6 +96,13 @@
                     <li><a href="{{route('property_groups.index')}}">لیست گروه ویژگی ها</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#">ویژگی</a>
+                <ul>
+                    <li><a href="{{route('properties.create')}}">ایجاد ویژگی</a></li>
+                    <li><a href="{{route('properties.index')}}">لیست ویژگی ها</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
