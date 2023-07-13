@@ -114,6 +114,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group row" data-select2-id="23">
+                            <label class="col-sm-2 col-form-label">انتخاب رنگ</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" multiple="" name="colors[]"
+                                        style="width: 100%;text-align: right" data-select2-id="1"
+                                        tabindex="-1" aria-hidden="true">
+                                    @foreach($colors as $key =>$value)
+                                        @if(in_array($key,$product->colors()->pluck('id')->toArray()))
+                                            <option selected value="{{$key}}">{{$value}}</option>
+                                        @else
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="file"> آپلود عکس </label>
                             <input type="file" class="form-control-file col-sm-10" id="file" name="file">
