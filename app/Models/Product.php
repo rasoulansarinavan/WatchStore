@@ -55,4 +55,9 @@ class Product extends Model
             return '';
         }
     }
+
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class, 'color_product');
+    }
 }
