@@ -53,7 +53,8 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">توضیحات محصول</label>
                             <div class="col-sm-10">
-                                <textarea id="description" name="description" cols="30" class="form-control" rows="10"></textarea>
+                                <textarea id="description" name="description" cols="30" class="form-control"
+                                          rows="10"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -68,7 +69,8 @@
                                 <label class="col-form-label">تاریخ انقضا شگفت انگیز</label>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" id="special_expiration" class="text-left form-control" dir="rtl" name="special_expiration">
+                                <input type="text" id="special_expiration" class="text-left form-control" dir="rtl"
+                                       name="special_expiration">
                             </div>
                         </div>
 
@@ -88,8 +90,20 @@
                             <div class="col-sm-10">
                                 <select class="form-select" name="brand_id" style="width: 100%;" data-select2-id="2"
                                         tabindex="-1" aria-hidden="true">
-
                                     @foreach($brands as $key => $value)
+                                        <option value="{{$key}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" data-select2-id="23">
+                            <label class="col-sm-2 col-form-label">انتخاب رنگ</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" multiple="" name="colors[]"
+                                        style="width: 100%;text-align: right" data-select2-id="1"
+                                        tabindex="-1" aria-hidden="true">
+                                    @foreach($colors as $key =>$value)
                                         <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
                                 </select>
@@ -131,7 +145,7 @@
             , gotoToday: true
         }
         kamaDatepicker('special_expiration', customOptions);
-        if($('#description').length) {
+        if ($('#description').length) {
             CKEDITOR.replace('description');
         }
     </script>
