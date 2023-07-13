@@ -6,6 +6,7 @@ use App\Helpers\helper;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class ProductController extends Controller
         $title = "ایجاد محصول";
         $brands = Brand::query()->pluck('title', 'id');
         $categories = Category::query()->pluck('title', 'id');
-        return view('admin.product.create', compact('title', 'brands', 'categories'));
+        $colors = Color::query()->pluck('title', 'id');
+        return view('admin.product.create', compact('title', 'brands', 'categories', 'colors'));
     }
 
     /**
@@ -38,7 +40,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $image = Product::saveImage($request->file);
-        Product::query()->create([
+        $product = Product::query()->create([
             'title' => $request->input(['title']),
             'title_en' => $request->input(['title_en']),
             'slug' => helper::make_slug($request->input(['title'])),
@@ -54,6 +56,8 @@ class ProductController extends Controller
             'category_id' => $request->input(['category_id']),
             'brand_id' => $request->input(['brand_id']),
         ]);
+        $colors = $request->input('colors');
+        $product->colors()->attach($colors);
         return redirect()->route('products.index')->with('message', 'محصول با موفقیت اضافه شد');
     }
 
@@ -74,7 +78,8 @@ class ProductController extends Controller
         $product = Product::query()->find($id);
         $categories = Category::query()->pluck('title', 'id');
         $brands = Brand::query()->pluck('title', 'id');
-        return view('admin.product.edit', compact('title', 'product', 'categories', 'brands'));
+        $colors = Color::query()->pluck('title', 'id');
+        return view('admin.product.edit', compact('title', 'product', 'categories', 'brands', 'colors'));
     }
 
     /**
@@ -100,6 +105,9 @@ class ProductController extends Controller
             'category_id' => $request->input(['category_id']),
             'brand_id' => $request->input(['brand_id']),
         ]);
+
+        $colors = $request->input('colors');
+        $product->colors()->sync($colors);
         return redirect()->route('products.index')->with('message', 'محصول با موفقیت ویرایش شد');
     }
 
