@@ -21,6 +21,7 @@
             <th class="text-center align-middle text-primary">محصول شگفت انگیز</th>
             <th class="text-center align-middle text-primary">وضعیت</th>
             <th class="text-center align-middle text-primary">برند محصول</th>
+{{--            <th class="text-center align-middle text-primary">رنگ محصول</th>--}}
             <th class="text-center align-middle text-primary">دسته بندی محصول</th>
             <th class="text-center align-middle text-primary">توضیحات محصول</th>
             <th class="text-center align-middle text-primary">ویرایش</th>
@@ -48,6 +49,7 @@
                 <td class="text-center align-middle">{{$product->is_special ==0?'---------------':'شگفت انگیز'}}</td>
                 <td class="text-center align-middle">{{$product->status}}</td>
                 <td class="text-center align-middle">{{$product->brand->title}}</td>
+{{--                <td class="text-center align-middle">{{@$product->colors()->pluck('id')->toArray()}}</td>--}}
                 <td class="text-center align-middle">{{$product->category->title}}</td>
                 <td class="text-center align-middle">{{$product->description}}</td>
                 <td class="text-center align-middle">
