@@ -15,16 +15,15 @@
             <th class="text-center align-middle text-primary">قیمت</th>
             <th class="text-center align-middle text-primary">بازدید</th>
             <th class="text-center align-middle text-primary">تعداد محصول</th>
-            <th class="text-center align-middle text-primary">گالری محصول</th>
-            <th class="text-center align-middle text-primary">ویژگی محصول</th>
             <th class="text-center align-middle text-primary">گارانتی محصول</th>
             <th class="text-center align-middle text-primary">تخفیف</th>
             <th class="text-center align-middle text-primary">محصول شگفت انگیز</th>
             <th class="text-center align-middle text-primary">وضعیت</th>
-            <th class="text-center align-middle text-primary">برند محصول</th>
-{{--            <th class="text-center align-middle text-primary">رنگ محصول</th>--}}
-            <th class="text-center align-middle text-primary">دسته بندی محصول</th>
-            <th class="text-center align-middle text-primary">توضیحات محصول</th>
+            <th class="text-center align-middle text-primary">برند</th>
+            <th class="text-center align-middle text-primary">دسته بندی</th>
+            <th class="text-center align-middle text-primary">توضیحات</th>
+            <th class="text-center align-middle text-primary">گالری محصول</th>
+            <th class="text-center align-middle text-primary">ویژگی های محصول</th>
             <th class="text-center align-middle text-primary">ویرایش</th>
             <th class="text-center align-middle text-primary">حذف</th>
             <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
@@ -50,7 +49,6 @@
                 <td class="text-center align-middle">{{$product->is_special ==0?'---------------':'شگفت انگیز'}}</td>
                 <td class="text-center align-middle">{{$product->status}}</td>
                 <td class="text-center align-middle">{{$product->brand->title}}</td>
-{{--                <td class="text-center align-middle">{{@$product->colors()->pluck('id')->toArray()}}</td>--}}
                 <td class="text-center align-middle">{{$product->category->title}}</td>
                 <td class="text-center align-middle">{{$product->description}}</td>
                 <td class="text-center align-middle">
