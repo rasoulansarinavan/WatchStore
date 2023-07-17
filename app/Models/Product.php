@@ -60,4 +60,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Color::class, 'product_color');
     }
+
+    public function properties()
+    {
+        return $this->belongsToMany(Property::class, 'product_property');
+    }
 }
