@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\PropertyGroup;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 
@@ -117,5 +118,16 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function addProperties()
+    {
+        $property_groups = PropertyGroup::query()->pluck('title', 'id');
+        return view('admin.product.create_property', compact('property_groups'));
+    }
+
+    public function storeProperties()
+    {
+
     }
 }
