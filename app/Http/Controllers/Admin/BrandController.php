@@ -34,12 +34,7 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        $image = Brand::saveImage($request->image);
-
-        Brand::query()->create([
-            'title' => $request->input(['title']),
-            'image' => $image
-        ]);
+        Brand::createBrand($request);
         return redirect()->route('brands.index')->with('message', 'برند با موفقیت ایجاد شد');
     }
 
