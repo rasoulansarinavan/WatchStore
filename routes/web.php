@@ -18,9 +18,13 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/forbidden', function () {
+    return view('index');
+})->name('forbidden');
+
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 //Route::middleware('auth')->group(function () {
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,7 +34,8 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+
     ///------ Main Route -----///
     Route::get('', [\App\Http\Controllers\Admin\PanelController::class, 'index'])->name('panel');
     ///------ USer -----///
