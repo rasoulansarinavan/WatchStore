@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
-class AuthController extends Controller
+class AuthApiController extends Controller
 {
     /**
      * @OA\Post(
