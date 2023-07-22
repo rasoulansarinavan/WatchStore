@@ -20,9 +20,40 @@ class ProductRepository
         return ProductResource::collection($products);
     }
 
+    public static function getMostSellerProducts()
+    {
+        $products = Product::query()->orderBy('sold', 'DESC')->paginate(12);
+        return ProductResource::collection($products);
+    }
+
     public static function get6NewestProducts()
     {
         $products = Product::query()->latest()->take(6)->get();
+        return ProductResource::collection($products);
+    }
+
+
+    public static function getNewestProducts()
+    {
+        $products = Product::query()->latest()->paginate(12);
+        return ProductResource::collection($products);
+    }
+
+    public static function getMostViewedProducts()
+    {
+        $products = Product::query()->orderBy('review', 'DESC')->paginate(12);
+        return ProductResource::collection($products);
+    }
+
+    public static function getCheapestProducts()
+    {
+        $products = Product::query()->orderBy('price', 'ASC')->paginate(12);
+        return ProductResource::collection($products);
+    }
+
+    public static function getMostExpensiveProducts()
+    {
+        $products = Product::query()->orderBy('price', 'DESC')->paginate(12);
         return ProductResource::collection($products);
     }
 
